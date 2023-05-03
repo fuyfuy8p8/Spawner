@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class EnemyGeneration : MonoBehaviour
 {
-    [SerializeField] private Transform[] spawnPoints;
-    [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private Transform[] _spawnPoints;
+    [SerializeField] private GameObject _enemyPrefab;
 
     private IEnumerator SpawnEnemiesCoroutine()
     {
         while (true)
         {
-            int _randomInt = Random.Range(0, spawnPoints.Length );
+            int _randomInt = Random.Range(0, _spawnPoints.Length );
             SpawnEnemy(_randomInt);
 
             yield return new WaitForSeconds(2f);
@@ -20,7 +20,7 @@ public class EnemyGeneration : MonoBehaviour
 
     private void SpawnEnemy(int spawnIndex)
     {
-        Instantiate(enemyPrefab, spawnPoints[spawnIndex].position, Quaternion.identity);
+        Instantiate(_enemyPrefab, _spawnPoints[spawnIndex].position, Quaternion.identity);
     }
 
     private void Start()
